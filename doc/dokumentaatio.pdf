@@ -1,0 +1,18 @@
+1. Johdanto
+
+    Järjestelmän tarkoitus: Järjestelmä on muistilista tieto- ja viestintätekniikan (tvt) sovelluksista, jotka ovat hyödyllisiä opettajalle.
+    Kuvaus: Sovelluslista listaa tvt-sovelluksia.
+    Tarkoitus: Opettaja näkee helposti sovelluslistasta, mitä sovelluksia voisi käyttää opetuksessa.
+    Järjestelmän tavoitteet:
+    - Kirjautuminen
+    - Sovelluksen lisäys, muokkaus ja poisto
+    - Tärkeysasteen lisäys ja poisto
+    - Sovelluksen tärkeyttäminen lisäyksessä tai myöhemmin
+    - Luokkien lisäys ja poisto
+    - Sovelluksien luokittelu
+    - Luokat voivat olla sisäkkäisiä
+    - Yhdellä askareella voi olla monta luokkaa
+
+    # Toteutus-/toimintaympäristö
+    Työ toteutetaan laitoksen users-palvelimella. Sovelluksessa käytetään PHP:ta. Käytön PostgreSQL:ää.
+    
