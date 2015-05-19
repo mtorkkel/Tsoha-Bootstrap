@@ -14,3 +14,10 @@ CREATE TABLE Sovellus(
   status varchar(50),
   lisatty DATE
   );
+
+CREATE TABLE Ryhma(
+  id SERIAL PRIMARY KEY,
+  ryhma_id INTEGER REFERENCES Sovellus(id), -- Viiteavain Sovellus-tauluun
+  nimi varchar(50) NOT NULL,
+  selitys varchar(400)
+  );
