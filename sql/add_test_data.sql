@@ -1,1 +1,1 @@
--- Lisää INSERT INTO lauseet tähän tiedostoon
+-- Lisää INSERT INTO lauseet tähän tiedostoon  

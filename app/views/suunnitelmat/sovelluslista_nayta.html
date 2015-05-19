@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Kahoot</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>URL:</strong> getkahoot.com</li>
+    <li><strong>Lyhyt kuvaus:</strong> Pelillinen kyselytyökalu, joka sopii eri oppiaineisiin.</li>
+    <li><strong>Status:</strong> <label class="label label-danger">kesken</label></li>
+    <li><strong>Lisäyspäivä:</strong> 19.5.2015</li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    Kahoot on kyselytyökalu, jossa on pelillisiä ominaisuuksia. Sovelluksessa voi tehdä monivalintatehtäviä ja tehtävän yhteyteen voi upottaa kuvan tai videon. Vastausaika on rajattu. Vastaajien pistetilanne näkyy joka kysymyksen jälkeen. Tulokset saa siirrettyä esimerkiksi exceliin. Sovellus on selkeä ja helppokäyttöinen sekä oppilaille että opettajalle.
+  </p>
+{% endblock %}

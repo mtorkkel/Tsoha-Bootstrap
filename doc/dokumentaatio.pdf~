@@ -1,0 +1,42 @@
+1. Johdanto
+
+Järjestelmän tarkoitus: Järjestelmä on muistilista tieto- ja viestintätekniikan (tvt) sovelluksista, jotka ovat hyödyllisiä opettajalle.
+
+Kuvaus: Sovelluslista listaa tvt-sovelluksia.
+Tarkoitus: Opettaja näkee helposti sovelluslistasta, mitä sovelluksia voisi käyttää opetuksessa.
+Järjestelmän tavoitteet:
+    - Kirjautuminen
+    - Sovelluksen lisäys, muokkaus ja poisto
+    - Tärkeysasteen lisäys ja poisto
+    - Sovelluksen tärkeyttäminen lisäyksessä tai myöhemmin
+    - Luokkien lisäys ja poisto
+    - Sovelluksien luokittelu
+    - Luokat voivat olla sisäkkäisiä
+    - Yhdellä askareella voi olla monta luokkaa
+
+Toteutus-/toimintaympäristö
+Työ toteutetaan laitoksen users-palvelimella. Sovelluksessa käytetään PHP:ta. Käytän PostgreSQL:ää.
+
+2. Yleiskuva järjestelmästä
+Käyttötapauskaavio
+
+Käyttäjäryhmät
+Opettaja
+Opettaja on rekisteröitynyt käyttäjä.
+
+Oppilas
+Oppilaalla tarkoitetaan ketä tahansa, joka pääsee selaamaan sovelluslistaa.
+
+Käyttötapauskuvaukset
+Opettajan käyttötapaukset
+Kirjautuminen: opettaja pääsee muokkaamaan sovelluslistaa, mihin edellytetään kirjautumista.
+
+Sovelluksen lisäys: sovelluslistalle lisätään esimerkiksi sovellus "padlet.com"
+
+Sovelluksen muokkaus: sovelluslistalle lisättyä sovellusta voidaan muokata, esimerkiksi muuttaa sen luokittelua eli tärkeyttä.
+
+Sovelluksen poisto: sovelluslistalla pyritään pitämään vain hyödyllisiä sovelluksia, minkä vuoksi tarvittaessa sovellus oidaan poistaa.
+
+Sovelluksen luokittelu:
+Sovelluksia voidaan luokitella niiden tärkeyden mukaan, esimerkiksi padlet.com -sovellukseen voidaan laittaa "5" osoittamaan, että sovellus on hyödyllinen. Voidaan käyttää asteikkoa 1-5.
+
