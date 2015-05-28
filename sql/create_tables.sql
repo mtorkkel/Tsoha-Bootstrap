@@ -12,7 +12,8 @@ CREATE TABLE Sovellus(
   url varchar(400),
   lyhytkuvaus varchar(400),
   status varchar(50),
-  lisatty DATE
+  lisatty DATE,
+  kuvaus varchar(400)
   );
 
 CREATE TABLE Ryhma(

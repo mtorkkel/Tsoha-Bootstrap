@@ -4,6 +4,6 @@ INSERT INTO Opettaja (nimi, salasana) VALUES ('Ope1', 'Ope1salas'); -- Koska id-
 INSERT INTO Opettaja (nimi, salasana) VALUES ('Ope2', 'Ope2salas');
 INSERT INTO Opettaja (nimi, salasana) VALUES ('Ope3', 'Ope3salas');
 -- Sovellus-taulun testidata
-INSERT INTO Sovellus (nimi, url, lyhytkuvaus, lisatty) VALUES ('Kahoot', 'getkahoot.com', 'Pelillinen kyselytyökalu', NOW());
+INSERT INTO Sovellus (nimi, url, lyhytkuvaus, lisatty, kuvaus) VALUES ('Kahoot', 'getkahoot.com', 'Pelillinen kyselytyökalu', NOW(), 'kuvaus');
 
 INSERT INTO Ryhma (nimi, selitys) VALUES ('Mobiilisovellus', 'Sopii käytettäväksi kännykällä.');
