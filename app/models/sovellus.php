@@ -5,6 +5,7 @@ class Sovellus extends BaseModel {
 
 	public function __construct($attributes){
     parent::__construct($attributes);
+    $this->validators = array('validoinimi', 'validoiurl', 'validoilyhytkuvaus');
 	}
   
   // $skyrim = new Sovellus(array('id' => 1, 'nimi' => 'Kahoot', 'lyhytkuvaus' => 'Kyselytyökalu'));
@@ -68,4 +69,56 @@ class Sovellus extends BaseModel {
 
   		$this->id = $row['id'];
   	}
+
+    public function update() {
+      $query = DB::connection()->prepare('UPDATE Sovellus (nimi, url, lyhytkuvaus, lisatty) VALUES (:nimi, :url, :lyhytkuvaus, NOW() ) RETURNING id');
+
+      $query->execute(array('nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus));
+
+      $row = $query->fetch();
+
+      $this->id = $row['id'];
+    }
+
+    public function destroy($id) {
+     // $query = DB::connection()->prepare('DELETE FROM Sovellus WHERE id = 'id'');
+      $query->execute(array('id' => $this->id));
+    }
+
+    public function validoinimi() {
+      $errors = array();
+      if($this->nimi == '' || $this->nimi == null) {
+        $errors[] = 'Nimi ei saa olla tyhjä.';
+      }
+      if(strlen($this->nimi) < 2) {
+        $errors[] = 'Nimen pituuden tulee olla vähintään kaksi merkkiä.';
+      }
+      return $errors;
+    }
+
+    public function validoiurl() {
+      $errors = array();
+      if($this->url == '' || $this->url == null) {
+        $errors[] = 'URL ei saa olla tyhjä.';
+      }
+      if(strlen($this->url) < 4) {
+        $errors[] = 'URL:n pituuden tulee olla vähintään neljä merkkiä.';
+      }
+      return $errors;
+    }
+
+    public function validoilyhytkuvaus() {
+      $errors = array();
+      if($this->lyhytkuvaus == '' || $this->lyhytkuvaus == null) {
+        $errors[] = 'Lyhyt kuvaus ei saa olla tyhjä.';
+      }
+      if(strlen($this->lyhytkuvaus) < 4) {
+        $errors[] = 'Lyhyen kuvauksen pituuden tulee olla vähintään neljä merkkiä.';
+      }
+      return $errors;
+    }
+
+
+
+    
 }

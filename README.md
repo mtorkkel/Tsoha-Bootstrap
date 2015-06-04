@@ -1,4 +1,4 @@
-# Tietokantasovelluksen esittelysivu
+﻿# Tietokantasovelluksen esittelysivu
 
 Yleisiä linkkejä:
 
@@ -16,3 +16,5 @@ Yleisiä linkkejä:
 ## Työn aihe
 
 http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html
+
+# Kirjautuminen

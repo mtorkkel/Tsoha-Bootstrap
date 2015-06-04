@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    SovellusController::sovelluslista();
   });
 
   $routes->get('/hiekkalaatikko', function() {
@@ -12,20 +12,12 @@
   SovellusController::sovelluslista();
 });
 
-  $routes->get('/sovelluslista_nayta', function() {
-  SovellusController::sovelluslista_nayta();
+  $routes->get('/naytasovellus', function() {
+  SovellusController::naytasovellus();
 });
 
 $routes->get('/login', function() {
   SovellusController::login();
-});
-
-$routes->get('/sovelluslista_muokkaus', function() {
-  SovellusController::sovelluslista_muokkaus();
-});
-
-$routes->get('/sovellus', function() {
-  SovellusController::sovelluslista();
 });
 
 $routes->get('/', function() {
@@ -44,11 +36,15 @@ $routes->post('/sovellus', function(){
   SovellusController::store();
 });
 
-$routes->get('/sovellus/:id/edit', function(){
-  SovellusController::sovelluslista_muokkaus();
-});
 
 $routes->get('/sovellus/:id/edit', function($id){
-  SovellusController::find($id);
+  SovellusController::edit($id);
 });
+
+
+$routes->post('/sovellus/:id/destroy', function($id){
+  SovellusController::destroy($id);
+});
+
+
 

@@ -11,18 +11,22 @@ class SovellusController extends BaseController {
     
     $params = $_POST;
     
-    $sovellus = new Sovellus(array(
+    $attributes = array(
       'nimi' => $params['nimi'],
       'url' => $params['url'],
       'lyhytkuvaus' => $params['lyhytkuvaus'],
       'lisatty' => $params['lisatty']
-    ));
+    );
 
-    
-    $sovellus->save();
+    $sovellus = new Sovellus($attributes);
+    $errors = $sovellus->errors();
 
-    
-    Redirect::to('/sovellus/' . $sovellus->id, array('message' => 'Sovellus on lisätty sovelluslistaasi!'));
+    if(count($errors) == 0) {
+      $sovellus->save();
+      Redirect::to('/sovellus/' . $sovellus->id, array('message' => 'Sovellus on lisätty sovelluslistaasi!'));
+    } else {
+      View::make('sovellus/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
+    }
   }
 
   public static function find($id) {
@@ -32,22 +36,49 @@ class SovellusController extends BaseController {
 		
 	}
 
+  public static function edit($id){
+    $sovellus = Sovellus::find($id);
+    View::make('muokkaasovellus.html', array('sovellus' => $sovellus));
+  }
+
+  public static function update($id){
+    $params = $_POST;
+
+    $attributes = array(
+      'id' => $id,
+      'nimi' => $params['nimi'],
+      'url' => $params['url'],
+      'lyhytkuvaus' => $params['lyhytkuvaus'],
+      'lisatty' => $params['lisatty']
+      );
+
+    $sovellus = new Sovellus($attributes);
+    $errors = $sovellus->errors();
+
+    if(count($errors) > 0){
+      View::make('muokkaasovellus.html', array('errors' => $errors, 'attributes' => $attributes));
+    }else{
+      $sovellus->update();
+
+      Redirect::to('/sovellus/' . $sovellus->id, array('message' => 'Sovellusta on muokattu onnistuneesti!'));
+    }
+  }
+
+
+  public static function destroy($id){
+    $sovellus = new Sovellus(array('id' => $id));
+    $sovellus->destroy($id);
+    Redirect::to('/sovelluslista', array('message' => 'Sovellus on poistettu onnistuneesti!'));
+  }
+
 	public static function sovelluslista(){
     $sovellukset = Sovellus::all();
     View::make('suunnitelmat/sovelluslista.html', array('sovellukset' => $sovellukset));
     Kint::dump($sovellukset);
   }
 
-    public static function sovelluslista_nayta(){
-    View::make('suunnitelmat/sovelluslista_nayta.html');
-  }
-
   public static function login(){
     View::make('suunnitelmat/login.html');
-  }
-
-  public static function sovelluslista_muokkaus(){
-    View::make('suunnitelmat/sovelluslista_muokkaus.html');
   }
 
    public static function create(){

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa sovellusta Kahoot</h1>
+  <h1>Muokkaa sovellusta</h1>
 
   <form>
     <div class="checkbox">
@@ -11,19 +11,19 @@
     </div>
     <div class="form-group">
       <label>Nimi</label>
-      <input class="form-control" value="Kahoot" type="text">
+      <input class="form-control" value='{{sovellus.nimi}}' type="text">
     </div>
     <div class="form-group">
       <label>URL</label>
-      <input class="form-control" value="getkahoot.com" type="text">
+      <input class="form-control" value='{{sovellus.url}}' type="text">
     </div>
     <div class="form-group">
       <label>Lyhyt kuvaus</label>
-      <input class="form-control" value="Pelillinen kyselytyökalu, joka sopii eri oppiaineisiin." type="text">
+      <input class="form-control" value='{{sovellus.lyhytkuvaus}}' type="text">
     </div>
     <div class="form-group">
       <label>Kuvaus</label>
-      <textarea class="form-control">        Kahoot on kyselytyökalu, jossa on pelillisiä ominaisuuksia. Sovelluksessa voi tehdä monivalintatehtäviä ja tehtävän yhteyteen voi upottaa kuvan tai videon. Vastausaika on rajattu. Vastaajien pistetilanne näkyy joka kysymyksen jälkeen. Tulokset saa siirrettyä esimerkiksi exceliin. Sovellus on selkeä ja helppokäyttöinen sekä oppilaille että opettajalle.
+      <textarea class="form-control"> {{sovellus.kuvaus}}
       </textarea>
     </div>
     <div class="form-group">
