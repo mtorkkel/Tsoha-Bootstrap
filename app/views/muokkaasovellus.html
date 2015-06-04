@@ -2,7 +2,7 @@
 {% block content %}
   <h1>Muokkaa sovellusta</h1>
 
-  <form>
+  <form method="post" action="{{base_path}}/sovellus/{{sovellus.id}}/edit">
     <div class="checkbox">
       <label>
         <input type="checkbox">
@@ -11,19 +11,19 @@
     </div>
     <div class="form-group">
       <label>Nimi</label>
-      <input class="form-control" value='{{sovellus.nimi}}' type="text">
+      <input name='nimi' class="form-control" value='{{sovellus.nimi}}' type="text">
     </div>
     <div class="form-group">
       <label>URL</label>
-      <input class="form-control" value='{{sovellus.url}}' type="text">
+      <input name='url' class="form-control" value='{{sovellus.url}}' type="text">
     </div>
     <div class="form-group">
       <label>Lyhyt kuvaus</label>
-      <input class="form-control" value='{{sovellus.lyhytkuvaus}}' type="text">
+      <input name='lyhytkuvaus' class="form-control" value='{{sovellus.lyhytkuvaus}}' type="text">
     </div>
     <div class="form-group">
       <label>Kuvaus</label>
-      <textarea class="form-control"> {{sovellus.kuvaus}}
+      <textarea name='kuvaus' class="form-control"> {{sovellus.kuvaus}}
       </textarea>
     </div>
     <div class="form-group">

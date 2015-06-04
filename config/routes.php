@@ -17,7 +17,7 @@
 });
 
 $routes->get('/login', function() {
-  SovellusController::login();
+  UserController::login();
 });
 
 $routes->get('/', function() {
@@ -41,6 +41,9 @@ $routes->get('/sovellus/:id/edit', function($id){
   SovellusController::edit($id);
 });
 
+$routes->post('/sovellus/:id/edit', function($id){
+  SovellusController::update($id);
+});
 
 $routes->post('/sovellus/:id/destroy', function($id){
   SovellusController::destroy($id);

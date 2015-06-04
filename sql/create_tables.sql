@@ -11,7 +11,7 @@ CREATE TABLE Sovellus(
   nimi varchar(50) NOT NULL,
   url varchar(400),
   lyhytkuvaus varchar(400),
-  status varchar(50),
+  status boolean,
   lisatty DATE,
   kuvaus varchar(400)
   );

@@ -13,25 +13,34 @@
   {% endif %}
 
   <form method="post" action="{{base_path}}/sovellus">
+        <div class="checkbox">
+      <label>
+        <input name='status' type="checkbox">
+        Käytetty
+      </label>
+      </div>
+
     <div class="form-group">
       <label class="control-label">Nimi</label>
-      <input name="nimi" class="form-control" value="{{attibutes.nimi}}" type="text">
+      <input name="nimi" class="form-control" type="text">
     </div>
 
     <div class="form-group">
       <label class="control-label">URL</label>
-      <input name="url" class="form-control" value="{{attibutes.url}}" type="text">
+      <input name="url" class="form-control"  type="text">
     </div>
 
     <div class="form-group">
       <label class="control-label">Lisäyspäivä</label>
-      <input name="lisatty" class="form-control" value="{{attibutes.lisatty}}" type="text">
+      <input name="lisatty" class="form-control" type="text">
     </div>
 
     <div class="form-group">
       <label class="control-label">Lyhyt kuvaus</label>
-      <textarea name="lyhytkuvaus" class="form-control" value="{{attibutes.lyhytkuvaus}}"></textarea>
+      <textarea name="lyhytkuvaus" class="form-control"></textarea>
     </div>
+
+
 
     <div class="form-group">
       <label>Kuvaus</label>

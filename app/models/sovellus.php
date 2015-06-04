@@ -61,9 +61,9 @@ class Sovellus extends BaseModel {
   	}
 
   	public function save() {
-  		$query = DB::connection()->prepare('INSERT INTO Sovellus (nimi, url, lyhytkuvaus, lisatty) VALUES (:nimi, :url, :lyhytkuvaus, NOW() ) RETURNING id');
+  		$query = DB::connection()->prepare('INSERT INTO Sovellus (nimi, url, lyhytkuvaus, lisatty, status) VALUES (:nimi, :url, :lyhytkuvaus, NOW(), :status ) RETURNING id');
 
-  		$query->execute(array('nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus));
+  		$query->execute(array('nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus, 'status' => $this->status));
 
   		$row = $query->fetch();
 
@@ -71,17 +71,17 @@ class Sovellus extends BaseModel {
   	}
 
     public function update() {
-      $query = DB::connection()->prepare('UPDATE Sovellus (nimi, url, lyhytkuvaus, lisatty) VALUES (:nimi, :url, :lyhytkuvaus, NOW() ) RETURNING id');
+      $query = DB::connection()->prepare('UPDATE Sovellus SET nimi=:nimi, url=:url, lyhytkuvaus=:lyhytkuvaus WHERE id=:id');
 
-      $query->execute(array('nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus));
+      $query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus));
 
       $row = $query->fetch();
 
-      $this->id = $row['id'];
+     
     }
 
     public function destroy($id) {
-     // $query = DB::connection()->prepare('DELETE FROM Sovellus WHERE id = 'id'');
+     $query = DB::connection()->prepare('DELETE FROM Sovellus WHERE id = :id');
       $query->execute(array('id' => $this->id));
     }
 

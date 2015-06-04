@@ -10,13 +10,18 @@ class SovellusController extends BaseController {
 	public static function store(){
     
     $params = $_POST;
-    
-    $attributes = array(
+      $attributes = array(
       'nimi' => $params['nimi'],
       'url' => $params['url'],
       'lyhytkuvaus' => $params['lyhytkuvaus'],
       'lisatty' => $params['lisatty']
-    );
+    ); 
+    if (iSSET($params['status'])){
+      $attributes['status']=1;
+     } else {
+      $attributes['status']=0;
+    }
+
 
     $sovellus = new Sovellus($attributes);
     $errors = $sovellus->errors();
@@ -43,14 +48,13 @@ class SovellusController extends BaseController {
 
   public static function update($id){
     $params = $_POST;
-
+    Kint::dump($params);
     $attributes = array(
       'id' => $id,
       'nimi' => $params['nimi'],
       'url' => $params['url'],
-      'lyhytkuvaus' => $params['lyhytkuvaus'],
-      'lisatty' => $params['lisatty']
-      );
+      'lyhytkuvaus' => $params['lyhytkuvaus']
+        );
 
     $sovellus = new Sovellus($attributes);
     $errors = $sovellus->errors();

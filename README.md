@@ -17,4 +17,4 @@ Yleisiä linkkejä:
 
 http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html
 
-# Kirjautuminen
+# Kirjautuminen. Nimi: Ope1, salasana: Ope1salas
