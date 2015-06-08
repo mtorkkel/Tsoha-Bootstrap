@@ -8,10 +8,15 @@ class User extends BaseModel {
 	$query->execute();
 	$row = $query->fetch();
 	if($row){
-  	
-	}else{
+		$user_id = $_SESSION['user'];
+       	$user = User::find($user_id);
+
+      return $user;
+  	  // Käyttäjä löytyi, palautetaan löytynyt käyttäjä oliona
+	}
+	return null;
   	// Käyttäjää ei löytynyt, palautetaan null
 	}
 	
-	}}
+	}
 	

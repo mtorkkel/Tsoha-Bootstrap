@@ -20,6 +20,10 @@ $routes->get('/login', function() {
   UserController::login();
 });
 
+$routes->post('/login', function(){
+   UserController::handle_login();
+});
+
 $routes->get('/', function() {
   SovellusController::sovelluslista();
 });
@@ -47,6 +51,10 @@ $routes->post('/sovellus/:id/edit', function($id){
 
 $routes->post('/sovellus/:id/destroy', function($id){
   SovellusController::destroy($id);
+});
+
+$routes->post('/logout', function(){
+  UserController::logout();
 });
 
 

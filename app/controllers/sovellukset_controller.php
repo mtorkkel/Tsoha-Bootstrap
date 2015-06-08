@@ -1,6 +1,7 @@
 <?php
 class SovellusController extends BaseController {
 	public static function index() {
+    self::check_logged_in();
 		$sovellukset = Sovellus::all();
 
 		View::make('views/suunnitelmat/sovelluslista.html', array('sovellukset' => $sovellukset));
@@ -8,6 +9,7 @@ class SovellusController extends BaseController {
 	}
 
 	public static function store(){
+    self::check_logged_in();
     
     $params = $_POST;
       $attributes = array(
@@ -35,6 +37,7 @@ class SovellusController extends BaseController {
   }
 
   public static function find($id) {
+    self::check_logged_in();
 		$sovellus = Sovellus::find($id);
 		Kint::dump($sovellus);
 		View::make('naytasovellus.html', array('sovellus' => $sovellus));
@@ -42,11 +45,13 @@ class SovellusController extends BaseController {
 	}
 
   public static function edit($id){
+    self::check_logged_in();
     $sovellus = Sovellus::find($id);
     View::make('muokkaasovellus.html', array('sovellus' => $sovellus));
   }
 
   public static function update($id){
+    self::check_logged_in();
     $params = $_POST;
     Kint::dump($params);
     $attributes = array(
@@ -70,6 +75,7 @@ class SovellusController extends BaseController {
 
 
   public static function destroy($id){
+    self::check_logged_in();
     $sovellus = new Sovellus(array('id' => $id));
     $sovellus->destroy($id);
     Redirect::to('/sovelluslista', array('message' => 'Sovellus on poistettu onnistuneesti!'));
