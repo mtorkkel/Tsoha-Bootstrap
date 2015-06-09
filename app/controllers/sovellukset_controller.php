@@ -58,7 +58,8 @@ class SovellusController extends BaseController {
       'id' => $id,
       'nimi' => $params['nimi'],
       'url' => $params['url'],
-      'lyhytkuvaus' => $params['lyhytkuvaus']
+      'lyhytkuvaus' => $params['lyhytkuvaus'],
+      'status' => $params['status']
         );
 
     $sovellus = new Sovellus($attributes);

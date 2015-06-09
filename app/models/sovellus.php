@@ -71,9 +71,9 @@ class Sovellus extends BaseModel {
   	}
 
     public function update() {
-      $query = DB::connection()->prepare('UPDATE Sovellus SET nimi=:nimi, url=:url, lyhytkuvaus=:lyhytkuvaus WHERE id=:id');
+      $query = DB::connection()->prepare('UPDATE Sovellus SET nimi=:nimi, url=:url, lyhytkuvaus=:lyhytkuvaus, status=:status WHERE id=:id');
 
-      $query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus));
+      $query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'url' => $this->url, 'lyhytkuvaus' => $this->lyhytkuvaus, 'status' => $this->status));
 
       $row = $query->fetch();
 

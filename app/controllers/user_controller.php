@@ -6,10 +6,10 @@ class UserController extends BaseController{
   public static function handle_login(){
     $params = $_POST;
 
-    $user = User::authenticate($params['käyttäjätunnus'], $params['salasana']);
+    $user = User::authenticate($params['kayttajatunnus'], $params['salasana']);
 
     if(!$user){
-      View::make('suunnitelmat/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'käyttäjätunnus' => $params['käyttäjätunnus']));
+      View::make('suunnitelmat/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
     }else{
       $_SESSION['user'] = $user->id;
 

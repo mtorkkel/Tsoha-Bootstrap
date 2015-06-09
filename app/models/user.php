@@ -3,13 +3,16 @@
 class User extends BaseModel {
 	public $id, $nimi, $salasana;
 
-	public function authenticate() {
-	$query = DB::connection()->prepare('SELECT * FROM Opettaja WHERE nimi = :nimi AND salasana = :salasama LIMIT 1', array('nimi' => $nimi, 'salasana' => $salasana));
-	$query->execute();
+	public function authenticate($kayttajatunnus, $salasana) {
+	$query = DB::connection()->prepare('SELECT * FROM Opettaja WHERE nimi = :nimi AND salasana = :salasana LIMIT 1');
+	$query->execute(array('nimi' => $kayttajatunnus, 'salasana' => $salasana));
 	$row = $query->fetch();
 	if($row){
-		$user_id = $_SESSION['user'];
-       	$user = User::find($user_id);
+		$user = new User(array(
+  				'id' => $row['id'],
+  				'nimi' => $row['nimi'],
+  				'salasana' => $row['salasana']
+  				));
 
       return $user;
   	  // Käyttäjä löytyi, palautetaan löytynyt käyttäjä oliona
@@ -17,6 +20,24 @@ class User extends BaseModel {
 	return null;
   	// Käyttäjää ei löytynyt, palautetaan null
 	}
+
+	  	public static function find($id) {
+  		$query = DB::connection()->prepare('SELECT * FROM Opettaja WHERE id = :id LIMIT 1');
+  		$query->execute(array('id' => $id));
+  		$row = $query->fetch();
+
+  		if($row) {
+  			$user = new User(array(
+  				'id' => $row['id'],
+  				'nimi' => $row['nimi'],
+  				'salasana' => $row['salasana']
+  				));
+
+  				return $user;
+  		}
+
+  		return null;
+  	}
 	
 	}
 	
