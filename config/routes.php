@@ -57,5 +57,41 @@ $routes->post('/logout', function(){
   UserController::logout();
 });
 
+// toista CRUD:ia varten
 
+  $routes->get('/kayttaja', function() {
+  UserController::kayttaja();
+});
+
+  $routes->get('/user/uusi', function(){
+  UserController::create();
+});
+
+  $routes->post('/user', function(){
+  UserController::store();
+});
+
+  $routes->get('/user/:id', function($id) {
+  UserController::find($id);
+});
+
+  $routes->get('/user/:id/edit', function($id){
+  UserController::edit($id);
+});
+
+  $routes->get('/', function() {
+  UserController::kayttaja();
+  });
+
+  $routes->get('/naytakayttaja', function() {
+  UserController::naytakayttaja();
+});
+
+  $routes->post('/user/:id/edit', function($id){
+  UserController::update($id);
+});
+
+  $routes->post('/user/:id/destroy', function($id){
+  UserController::destroy($id);
+});
 

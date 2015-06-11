@@ -38,6 +38,56 @@ class User extends BaseModel {
 
   		return null;
   	}
+
+
+    //toista CRUD:ia varten seuraavat
+
+  	  	public static function all() {
+  		$query = DB::connection()->prepare('SELECT * FROM Opettaja');
+
+  		$query->execute();
+
+  		$rows = $query->fetchAll();
+  		$users = array();
+
+  		foreach($rows as $row) {
+
+  			$users[] = new User(array(
+  				'id' => $row['id'],
+  				'nimi' => $row['nimi'],
+  				'salasana' => $row['salasana']
+  				));
+  		}
+  		
+  		return $users;
+
+
+  	}
+
+  	  	public function save() {
+  		$query = DB::connection()->prepare('INSERT INTO Opettaja (nimi, salasana) VALUES (:nimi, :salasana ) RETURNING id');
+
+  		$query->execute(array('nimi' => $this->nimi, 'salasana' => $this->salasana));
+
+  		$row = $query->fetch();
+
+  		$this->id = $row['id'];
+  	}
+
+    public function update() {
+      $query = DB::connection()->prepare('UPDATE Opettaja SET nimi=:nimi, salasana=:salasana WHERE id=:id');
+
+      $query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'salasana' => $this->salasana));
+
+      $row = $query->fetch();
+
+     
+    }
+
+    public function destroy($id) {
+     $query = DB::connection()->prepare('DELETE FROM Opettaja WHERE id = :id');
+      $query->execute(array('id' => $this->id));
+    }
 	
 	}
 	

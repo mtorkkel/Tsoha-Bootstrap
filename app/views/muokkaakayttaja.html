@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa käyttäjää</h1>
+
+  <form method="post" action="{{base_path}}/user/{{user.id}}/edit">
+    <div class="form-group">
+      <label>Nimi</label>
+      <input name='nimi' class="form-control" value='{{user.nimi}}' type="text">
+    </div>
+    <div class="form-group">
+      <label>Salasana</label>
+      <input name='salasana' class="form-control" value='{{user.salasana}}' type="text">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}
