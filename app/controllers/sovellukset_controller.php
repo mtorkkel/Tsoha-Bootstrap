@@ -39,7 +39,7 @@ class SovellusController extends BaseController {
   public static function find($id) {
     self::check_logged_in();
 		$sovellus = Sovellus::find($id);
-		Kint::dump($sovellus);
+		// Kint::dump($sovellus);
 		View::make('naytasovellus.html', array('sovellus' => $sovellus));
 		
 	}
@@ -53,7 +53,7 @@ class SovellusController extends BaseController {
   public static function update($id){
     self::check_logged_in();
     $params = $_POST;
-    Kint::dump($params);
+    // Kint::dump($params);
     $attributes = array(
       'id' => $id,
       'nimi' => $params['nimi'],
@@ -85,7 +85,7 @@ class SovellusController extends BaseController {
 	public static function sovelluslista(){
     $sovellukset = Sovellus::all();
     View::make('suunnitelmat/sovelluslista.html', array('sovellukset' => $sovellukset));
-    Kint::dump($sovellukset);
+    // Kint::dump($sovellukset);
   }
 
   public static function login(){

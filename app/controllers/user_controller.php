@@ -29,7 +29,7 @@ class UserController extends BaseController{
     self::check_logged_in();
     $users = User::all();
     View::make('kayttaja.html', array('users' => $users));
-    Kint::dump($users);
+    // Kint::dump($users);
   }
 
   public static function create(){
@@ -60,7 +60,7 @@ class UserController extends BaseController{
   public static function find($id) {
     self::check_logged_in();
     $user = User::find($id);
-    Kint::dump($user);
+    // Kint::dump($user);
     View::make('naytakayttaja.html', array('user' => $user));
     
   }
@@ -74,7 +74,7 @@ class UserController extends BaseController{
     public static function update($id){
     self::check_logged_in();
     $params = $_POST;
-    Kint::dump($params);
+    // Kint::dump($params);
     $attributes = array(
       'id' => $id,
       'nimi' => $params['nimi'],

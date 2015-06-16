@@ -31,7 +31,7 @@ class Sovellus extends BaseModel {
           'kuvaus' => $row['kuvaus']
   				));
   		}
-  		Kint::dump($sovellukset);
+  		// Kint::dump($sovellukset);
   		return $sovellukset;
 
 
